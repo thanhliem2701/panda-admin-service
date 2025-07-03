@@ -1,10 +1,10 @@
-import { Controller } from "@nestjs/common";
+import { Controller,Body } from "@nestjs/common";
 import { UserService } from "./user.service";
-import { MessagePattern } from "@nestjs/microservices";
+import { MessagePattern, Payload } from "@nestjs/microservices";
 
 @Controller()
 export class UserController {
-    constructor (private readonly userService: UserService) {}
+    constructor(private readonly userService: UserService) { }
 
     // Get All users
     @MessagePattern("get_all_users")
@@ -12,9 +12,21 @@ export class UserController {
         return await this.userService.getAllUsers();
     }
 
-    // Get user by Id
+    // Get a user by ID
+    @MessagePattern("get_user_by_id")
+    async getAdminById(@Payload() data: { id: string }) {
+        return await this.userService.getUserById(data.id);
+    }
 
-    // Create new user
+    // Create a new user
+    @MessagePattern("create_new_user")
+    async createNewAdmin(@Body() user_info: any) {
+        return await this.userService.createNewUser(user_info);
+    }
 
-    // Update user
- }
+    //Update an existing user
+    @MessagePattern("update_user_info")
+    async updateAdminInfo(@Body() updateData: any) {
+        return await this.userService.updateUserInfo(updateData);
+    }
+}

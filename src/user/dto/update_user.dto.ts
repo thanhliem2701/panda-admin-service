@@ -1,10 +1,10 @@
-import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii,  IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty } from "class-validator"
+import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii, IsObject, IsEmail, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty } from "class-validator"
 import { messages } from "src/common/messages";
-import { Expose,Type } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 
-export class UpdateUserAdminDto {
+export class UpdateUserDto {
     @Expose()
-    @IsNotEmpty({ message: messages.ID_INVALID }) // Ensure the id is not provided in the update request
+    @IsNotEmpty({ message: messages.ID_INVALID }) // Ensure the id is provided in the update request
     @IsNumber()
     @Type(() => Number)
     id: number;
@@ -47,15 +47,19 @@ export class UpdateUserAdminDto {
     @Expose()
     @IsOptional()
     @IsString()        // Ensure the phone number is a string
-    @IsAlphanumeric()  // Ensure the phone number is alphanumeric
     @MaxLength(15)     // Maximum length of 15 characters
     phone?: string;
 
     @Expose()
+    @MaxLength(50)     // Maximum length of 15 characters
     @IsOptional()
-    @IsString()        // Ensure the role is a string
-    @IsIn(["ADMIN", "OPERATOR"]) // Ensure the role is either ADMIN 
-    role?: string = "ADMIN";
+    @IsString()
+    address?: string;
+
+    @Expose()
+    @IsObject()
+    @IsOptional()
+    delivery?: Record<string, string>;
 
     @Expose()
     @IsOptional()

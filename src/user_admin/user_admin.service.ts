@@ -95,7 +95,7 @@ export class UserAdminService {
         // remove id from dto to avoid updating
         const { id, ...updateData } = dto;
 
-        // insert new admin into database
+        // update admin info to database
         try {
             await this.Prisma.user_admin.update({ where: { id }, data: updateData })
         } catch (error) {

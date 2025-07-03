@@ -7,6 +7,8 @@ export const messages = {
     USER_NOT_FOUND: 'User not found !',
     USER_LIST_EMPTY: 'There are no user in the system !',
     USER_ID_NOT_PROVIDED: 'User ID is not provided !',
+    SIDE_MENU_LIST_EMPTY: 'There are no menu in the system !',
+    SIDE_MENU_NOT_PROVIDED: 'Menu ID is not provided !',
 
     //validate messages
     ID_INVALID: 'Invalid ID provided !',
@@ -17,17 +19,23 @@ export const messages = {
     PHONE_INVALID: 'Invalid phone number !',
     ROLE_INVALID: 'Role is required !',
     DATE_OF_BIRTH_INVALID: 'Date of birth is required !',
+    MENU_NAME_REQUIRED: 'Menu name is required and must be a string !',
+    IMAGE_URL_REQUIRED: 'Image url is required and must be a string !',
 
     //Success messages
     ADMIN_CREATED: 'Admin created successfully !',
     ADMIN_UPDATED: 'Admin updated successfully !',
     USER_CREATED: 'User created successfully !',
     USER_UPDATED: 'User updated successfully !',
+    MENU_CREATED: 'Menu created successfully !',
+    MENU_UPDATED: 'Menu updated successfully !',
    
 
     // fail messages
     ADMIN_CREATION_FAILED: 'Failed to create admin !',
     ADMIN_UPDATE_FAILED: 'Failed to update admin !',
     USER_CREATION_FAILED: 'Failed to create user !',
-    USER_UPDATE_FAILED: 'Failed to update user !'
+    USER_UPDATE_FAILED: 'Failed to update user !',
+    MENU_CREATION_FAILED: 'Failed to create menu !',
+    MENU_UPDATE_FAILED: 'Failed to update menu !',
 }

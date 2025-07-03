@@ -1,7 +1,6 @@
 import { Body, Controller } from "@nestjs/common";
 import { UserAdminService } from "./user_admin.service";
 import { MessagePattern, Payload } from "@nestjs/microservices";
-import { CreateUserAdminDto } from "./dto/create_user_admin.dto";
 
 @Controller()
 export class UserAdminController {

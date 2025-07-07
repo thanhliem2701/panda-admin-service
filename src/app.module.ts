@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SideMenuModule } from './side_menu/side_menu.module';
 import { UserAdminModule } from './user_admin/user_admin.module';
 import { UserModule } from './user/user.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -13,7 +14,9 @@ import { UserModule } from './user/user.module';
     SideMenuModule,
     UserAdminModule,
     UserModule,
-    ConfigModule.forRoot({isGlobal:true})],
+    CategoryModule,
+    ConfigModule.forRoot({isGlobal:true}),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -6,4 +6,4 @@ import { SideMenuController } from './side_menu.controller';
   controllers: [SideMenuController],
   providers: [SideMenuService],
 })
-export class SideMenuModule {}
+export class SideMenuModule { }

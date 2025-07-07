@@ -1,4 +1,4 @@
-import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii,  IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty } from "class-validator"
+import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii,  IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty, IsDate, isBoolean, IsBoolean } from "class-validator"
 import { messages } from "src/common/messages";
 import { Expose,Type } from 'class-transformer';
 
@@ -58,12 +58,8 @@ export class UpdateUserAdminDto {
     role?: string = "ADMIN";
 
     @Expose()
+    @IsBoolean()
     @IsOptional()
     enabled?: boolean = true;
-    @Expose()
-    @IsOptional()
-    created_at?: Date;
-    @Expose()
-    @IsOptional()
-    updated_at?: Date = new Date();
+
 }

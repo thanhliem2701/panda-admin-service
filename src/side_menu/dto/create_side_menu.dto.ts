@@ -1,4 +1,4 @@
-import {  IsString, MaxLength, IsNotEmpty, IsNumber } from "class-validator"
+import {  IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional, IsBoolean, IsDate } from "class-validator"
 import { Expose } from 'class-transformer';
 
 export class CreateSideMenuDto {
@@ -10,20 +10,16 @@ export class CreateSideMenuDto {
 
     @Expose()
     @IsString()
+    @IsOptional()
     imgurl: string;
 
     @Expose()
     @IsNumber()
+    @IsOptional()
     display_order: number;
 
     @Expose()
     @IsString()
+    @IsOptional()
     tag: string;
-
-    @Expose()
-    enabled: boolean = true;
-    @Expose()
-    created_at: Date = new Date();
-    @Expose()
-    updated_at: Date = new Date();
 }

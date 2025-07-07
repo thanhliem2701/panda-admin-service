@@ -1,7 +1,7 @@
-import { IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional,IsDate, IsBoolean } from "class-validator"
+import { IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional, IsBoolean, IsDate } from "class-validator"
 import { Expose, Type } from 'class-transformer';
 
-export class UpdateSideMenuDto {
+export class UpdateCategoryDto {
     @Expose()
     @IsNotEmpty() // Ensure the id is provided in the update request
     @IsNumber()
@@ -10,9 +10,16 @@ export class UpdateSideMenuDto {
 
     @Expose()
     @IsString()
+    @IsNotEmpty()
+    @MaxLength(50)
     @IsOptional()
-    @MaxLength(50)     // Maximum length of 50 characters
-    menu_name?: string;
+    category_name?: string;
+
+    @Expose()
+    @IsNumber()
+    @Type(() => Number)
+    @IsOptional()
+    menu_id?: number;
 
     @Expose()
     @IsString()
@@ -28,7 +35,7 @@ export class UpdateSideMenuDto {
     @IsString()
     @IsOptional()
     tag?: string;
-    
+
     @Expose()
     @IsBoolean()
     @IsOptional()

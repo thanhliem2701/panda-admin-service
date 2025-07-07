@@ -1,14 +1,21 @@
 export const messages = {
     //Error messages
     ADMIN_NOT_FOUND: 'Admin not found !',
-    ADMIN_LIST_EMPTY: 'There are no admin in the system !',
+    ADMIN_LIST_EMPTY: 'There is no admin in the system !',
     AMQP_NOT_DEFINED: 'AMQP_URL is not defined in the configuration',
     ADMIN_ID_NOT_PROVIDED: 'Admin ID is not provided !',
     USER_NOT_FOUND: 'User not found !',
-    USER_LIST_EMPTY: 'There are no user in the system !',
+    USER_LIST_EMPTY: 'There is no user in the system !',
     USER_ID_NOT_PROVIDED: 'User ID is not provided !',
-    SIDE_MENU_LIST_EMPTY: 'There are no menu in the system !',
+    SIDE_MENU_LIST_EMPTY: 'There is no menu in the system !',
     SIDE_MENU_NOT_PROVIDED: 'Menu ID is not provided !',
+    CATEGORIES_LIST_EMPTY: 'There is no Category in the system !',
+    CATEGORIES_ID_NOT_PROVIDED: 'Category ID is not provided !',
+    CATEGORY_NOT_FOUND: 'Category not found !',
+    AWS_BUCKET_NAME_NOT_DEFINED: 'AWS_BUCKET_NAME is not defined in the environment variables !',
+    AWS_REGION_NOT_DEFINED: 'AWS_REGION is not defined !',
+    AWS_ACCESS_KEY_NOT_DEFINED: 'AWS_ACCESS_KEY is not defined !',
+    AWS_SECRET_KEY_NOT_DEFINED: 'AWS_SECRET_KEY is not defined !',
 
     //validate messages
     ID_INVALID: 'Invalid ID provided !',
@@ -29,7 +36,8 @@ export const messages = {
     USER_UPDATED: 'User updated successfully !',
     MENU_CREATED: 'Menu created successfully !',
     MENU_UPDATED: 'Menu updated successfully !',
-   
+    CATEGORY_CREATED: 'Category created successfully !',
+    CATEGORY_UPDATED: 'Category updated successfully !',
 
     // fail messages
     ADMIN_CREATION_FAILED: 'Failed to create admin !',
@@ -38,4 +46,6 @@ export const messages = {
     USER_UPDATE_FAILED: 'Failed to update user !',
     MENU_CREATION_FAILED: 'Failed to create menu !',
     MENU_UPDATE_FAILED: 'Failed to update menu !',
+    CATEGORY_CREATION_FAILED: 'Failed to create category !',
+    CATEGORY_UPDATE_FAILED: 'Failed to update category !'
 }

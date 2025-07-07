@@ -1,4 +1,4 @@
-import { Matches, IsAlphanumeric, IsAscii, IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString } from "class-validator"
+import { Matches, IsAlphanumeric, IsAscii, IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsBoolean, IsOptional } from "class-validator"
 import { messages } from "src/common/messages";
 import { Expose } from 'class-transformer';
 
@@ -44,10 +44,4 @@ export class CreateUserAdminDto {
     @IsIn(["ADMIN", "OPERATOR"]) // Ensure the role is either ADMIN 
     role: string = "ADMIN";
 
-    @Expose()
-    enabled: boolean = true;
-    @Expose()
-    created_at: Date = new Date();
-    @Expose()
-    updated_at: Date = new Date();
 }

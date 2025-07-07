@@ -47,11 +47,4 @@ export class CreateUserDto {
     @IsObject()
     @IsOptional()
     delivery: Record<string, string>;
-
-    @Expose()
-    enabled: boolean = true;
-    @Expose()
-    created_at: Date = new Date();
-    @Expose()
-    updated_at: Date = new Date();
 }

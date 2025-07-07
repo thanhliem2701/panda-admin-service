@@ -6,8 +6,6 @@ import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { UpdateSideMenuDto } from './dto/update_side_menu.dto';
 
-
-
 @Injectable()
 export class SideMenuService {
     constructor(private prisma: PrismaService) { }
@@ -50,7 +48,6 @@ export class SideMenuService {
         // validate data in DTO
         const err = await validate(dto);
         if (err.length > 0) {
-            console.log("err: ",err)
             const messages = err.flatMap(error => {
                 Object.values(error.constraints || {})
             })

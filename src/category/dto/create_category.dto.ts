@@ -1,4 +1,4 @@
-import { IsString, MaxLength, IsNotEmpty, IsNumber,IsOptional, IsBoolean, IsDate } from "class-validator"
+import { IsString, MaxLength, IsNotEmpty, IsNumber,IsOptional } from "class-validator"
 import { Expose, Type } from 'class-transformer';
 
 export class CreateCategoryDto {

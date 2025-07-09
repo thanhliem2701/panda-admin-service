@@ -13,25 +13,25 @@ export class UserService {
     /*------ Get all users ------*/
     async getAllUsers() {
         const users = await this.Prisma.users.findMany()
-        if (!users) {
-            return { success: false, messages: messages.USER_LIST_EMPTY }
+        if (users.length <= 0) {
+            return { statusCode: 200, messages: messages.USER_LIST_EMPTY }
         }
         const user_list = users.map(({ pw: _, ...user }) => user);
-        return { success: true, data: user_list };
+        return { statusCode: 200, data: user_list };
     }
 
     /*------ Get user by id ------*/
     async getUserById(id: string) {
         const parseIntId = parseInt(id);
         if (!parseIntId) {
-            return { success: false, messages: messages.USER_ID_NOT_PROVIDED };
+            return { statusCode: 400, messages: messages.USER_ID_NOT_PROVIDED };
         }
         const user = await this.Prisma.users.findUnique({ where: { id: parseIntId } });
         if (!user) {
-            return { success: false, messages: messages.USER_NOT_FOUND };
+            return { statusCode: 404, messages: messages.USER_NOT_FOUND };
         }
         const { pw: _, ...user_info } = user;
-        return { success: true, data: user_info };
+        return { statusCode: 200, data: user_info };
     }
 
     /*------ Create a new user  ------*/
@@ -44,7 +44,7 @@ export class UserService {
             const messages = err.flatMap(error =>
                 Object.values(error.constraints || {})
             );
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
         // use bycrypt saltRounds to hash the password
         const saltRounds = 10;
@@ -55,9 +55,9 @@ export class UserService {
         try {
             await this.Prisma.users.create({ data: dto })
         } catch (error) {
-            return { success: false, messages: messages.USER_CREATION_FAILED };
+            return { statusCode: 500, messages: messages.USER_CREATION_FAILED };
         }
-        return { success: true, messages: messages.USER_CREATED };
+        return { statusCode: 201, messages: messages.USER_CREATED };
     }
 
     /*------ Update an existing user  ------*/
@@ -71,7 +71,7 @@ export class UserService {
             const messages = err.flatMap(error =>
                 Object.values(error.constraints || {})
             );
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
 
         // update password if provided
@@ -89,8 +89,8 @@ export class UserService {
         try {
             await this.Prisma.users.update({ where: { id }, data: updateData })
         } catch (error) {
-            return { success: false, messages: messages.USER_UPDATE_FAILED };
+            return { statusCode: 500, messages: messages.USER_UPDATE_FAILED };
         }
-        return { success: true, messages: messages.USER_UPDATED };
+        return { statusCode: 201, messages: messages.USER_UPDATED };
     }
 }

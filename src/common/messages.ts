@@ -16,6 +16,9 @@ export const messages = {
     AWS_REGION_NOT_DEFINED: 'AWS_REGION is not defined !',
     AWS_ACCESS_KEY_NOT_DEFINED: 'AWS_ACCESS_KEY is not defined !',
     AWS_SECRET_KEY_NOT_DEFINED: 'AWS_SECRET_KEY is not defined !',
+    TOP_BANNER_LIST_EMPTY: 'There is no top banner in the system !',
+    CATEGORY_BANNER_LIST_EMPTY: 'There is no category banner in the system !',
+
 
     //validate messages
     ID_INVALID: 'Invalid ID provided !',
@@ -38,6 +41,10 @@ export const messages = {
     MENU_UPDATED: 'Menu updated successfully !',
     CATEGORY_CREATED: 'Category created successfully !',
     CATEGORY_UPDATED: 'Category updated successfully !',
+    TOP_BANNER_CREATED: 'Top banner created successfully !',
+    TOP_BANNER_UPDATED: 'Top banner updated successfully !',
+    CATEGORY_BANNER_CREATED: 'Category banner created successfully !',
+    CATEGORY_BANNER_UPDATED: 'Category banner updated successfully !',
 
     // fail messages
     ADMIN_CREATION_FAILED: 'Failed to create admin !',
@@ -47,5 +54,9 @@ export const messages = {
     MENU_CREATION_FAILED: 'Failed to create menu !',
     MENU_UPDATE_FAILED: 'Failed to update menu !',
     CATEGORY_CREATION_FAILED: 'Failed to create category !',
-    CATEGORY_UPDATE_FAILED: 'Failed to update category !'
+    CATEGORY_UPDATE_FAILED: 'Failed to update category !',
+    TOP_BANNER_CREATION_FAILED: 'Failed to create top banner !',
+    TOP_BANNER_UPDATE_FAILED: 'Failed to update top banner !',
+    CATEGORY_BANNER_CREATION_FAILED: 'Failed to create category banner !',
+    CATEGORY_BANNER_UPDATE_FAILED: 'Failed to update category banner !',
 }

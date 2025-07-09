@@ -15,14 +15,12 @@ export class SideMenuController {
     //Create side menu
     @MessagePattern('create_side_menu')
     async createSideMenu(@Body() menu_info: any) {
-        console.log("menu_info: ", menu_info)
         return await this.sideMenuService.createSideMenu(menu_info);
     }
 
     //update side menu
     @MessagePattern('update_side_menu_info')
     async updateSideMenu(@Body() menu_info: any) {
-        console.log("menu_info: ", menu_info)
         return await this.sideMenuService.updateSideMenu(menu_info)
     }
 }

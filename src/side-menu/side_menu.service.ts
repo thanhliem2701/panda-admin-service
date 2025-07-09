@@ -13,10 +13,10 @@ export class SideMenuService {
     /*------ Get all side menus ------*/
     async getAllSideMenu() {
         const menus = await this.prisma.side_menus.findMany();
-        if (!menus) {
-            return { success: false, messages: messages.SIDE_MENU_LIST_EMPTY }
+        if (menus.length <= 0) {
+            return { statusCode: 200, messages: messages.SIDE_MENU_LIST_EMPTY }
         }
-        return { success: true, data: menus }
+        return { statusCode: 200, data: menus }
     }
 
     /*------ create side menus ------*/
@@ -29,16 +29,16 @@ export class SideMenuService {
             const messages = err.flatMap(error => {
                 Object.values(error.constraints || {})
             })
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
         // insert new menu to db
         try {
             await this.prisma.side_menus.create({ data: dto })
         }
         catch (error) {
-            return { success: false, messages: messages.MENU_CREATION_FAILED }
+            return { statusCode: 500, messages: messages.MENU_CREATION_FAILED }
         }
-        return { success: true, messages: messages.MENU_CREATED }
+        return { statusCode: 201, messages: messages.MENU_CREATED }
     }
 
     /*------ update side menus ------*/
@@ -51,7 +51,7 @@ export class SideMenuService {
             const messages = err.flatMap(error => {
                 Object.values(error.constraints || {})
             })
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
         // remove id from dto to avoid updating
         const { id, ...updateData } = dto;
@@ -60,8 +60,8 @@ export class SideMenuService {
             await this.prisma.side_menus.update({ where: { id }, data: updateData })
         }
         catch (error) {
-            return { success: false, messages: messages.MENU_UPDATE_FAILED }
+            return { statusCode: 500, messages: messages.MENU_UPDATE_FAILED }
         }
-        return { success: true, messages: messages.MENU_UPDATED }
+        return { statusCode: 201, messages: messages.MENU_UPDATED }
     }
 }

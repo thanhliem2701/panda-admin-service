@@ -1,4 +1,4 @@
-import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii,  IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty, IsDate, isBoolean, IsBoolean } from "class-validator"
+import { Matches, IsOptional, IsNumber, IsAlphanumeric, IsAscii,  IsEmail, IsIn, IsString, MaxLength, MinLength, IsDateString, IsNotEmpty, IsBoolean } from "class-validator"
 import { messages } from "src/common/messages";
 import { Expose,Type } from 'class-transformer';
 

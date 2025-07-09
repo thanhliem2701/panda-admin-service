@@ -23,25 +23,25 @@ export class UserAdminService {
                 }
             }
         });
-        if (!user_admins) {
-            return { success: false, messages: messages.ADMIN_LIST_EMPTY }
+        if (user_admins.length <= 0) {
+            return { statusCode: 200, messages: messages.ADMIN_LIST_EMPTY }
         }
         const user_admins_without_pw = user_admins.map(({ pw: _, ...user_admin_info }) => user_admin_info);
-        return { success: true, data: user_admins_without_pw };
+        return { statusCode: 200, data: user_admins_without_pw };
     }
 
     /*------ Get user admin by id ------*/
     async getAdminById(id: string) {
         const parseIntId = parseInt(id);
         if (!parseIntId) {
-            return { success: false, messages: messages.ADMIN_ID_NOT_PROVIDED };
+            return { statusCode: 400, messages: messages.ADMIN_ID_NOT_PROVIDED };
         }
         const user_admin = await this.Prisma.user_admin.findUnique({ where: { id: parseIntId } });
         if (!user_admin) {
-            return { success: false, messages: messages.ADMIN_NOT_FOUND };
+            return { statusCode: 404, messages: messages.ADMIN_NOT_FOUND };
         }
         const { pw: _, ...user_admin_info } = user_admin;
-        return { success: true , data: user_admin_info };
+        return { statusCode: 200, data: user_admin_info };
     }
 
     /*------ Create a new user admin ------*/
@@ -54,7 +54,7 @@ export class UserAdminService {
             const messages = err.flatMap(error =>
                 Object.values(error.constraints || {})
             );
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
         // use bycrypt saltRounds to hash the password
         const saltRounds = 10;
@@ -65,9 +65,9 @@ export class UserAdminService {
         try {
             await this.Prisma.user_admin.create({ data: dto })
         } catch (error) {
-            return { success: false, messages: messages.ADMIN_CREATION_FAILED };
+            return { statusCode: 500, messages: messages.ADMIN_CREATION_FAILED };
         }
-        return { success: true, messages: messages.ADMIN_CREATED };
+        return { statusCode: 201, messages: messages.ADMIN_CREATED };
     }
 
     /*------ Update an existing user admin ------*/
@@ -81,7 +81,7 @@ export class UserAdminService {
             const messages = err.flatMap(error =>
                 Object.values(error.constraints || {})
             );
-            return { success: false, messages: messages };
+            return { statusCode: 400, messages: messages };
         }
 
         // update password if provided
@@ -99,8 +99,8 @@ export class UserAdminService {
         try {
             await this.Prisma.user_admin.update({ where: { id }, data: updateData })
         } catch (error) {
-            return { success: false, messages: messages.ADMIN_UPDATE_FAILED };
+            return { statusCode: 500, messages: messages.ADMIN_UPDATE_FAILED };
         }
-        return { success: true , messages: messages.ADMIN_UPDATED };
+        return { statusCode: 201, messages: messages.ADMIN_UPDATED };
     }
 }

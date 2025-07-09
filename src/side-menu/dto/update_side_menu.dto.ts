@@ -1,4 +1,4 @@
-import { IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional,IsDate, IsBoolean } from "class-validator"
+import { IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional, IsBoolean } from "class-validator"
 import { Expose, Type } from 'class-transformer';
 
 export class UpdateSideMenuDto {

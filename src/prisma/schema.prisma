@@ -39,7 +39,7 @@ model categories {
 
 model category_banners {
   id          Int         @id @default(autoincrement())
-  banner_name String?     @db.VarChar(20)
+  banner_name String?     @db.VarChar(50)
   imgurl      String?
   detail_link String?
   menu_id     Int?

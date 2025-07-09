@@ -1,7 +1,7 @@
 import { IsString, MaxLength, IsNotEmpty, IsNumber, IsOptional, IsBoolean } from "class-validator"
 import { Expose, Type } from 'class-transformer';
 
-export class UpdateCategoryDto {
+export class UpdateCategoryBannerDto {
     @Expose()
     @IsNotEmpty() // Ensure the id is provided in the update request
     @IsNumber()
@@ -10,16 +10,9 @@ export class UpdateCategoryDto {
 
     @Expose()
     @IsString()
-    @IsNotEmpty()
-    @MaxLength(50)
     @IsOptional()
-    category_name?: string;
-
-    @Expose()
-    @IsNumber()
-    @Type(() => Number)
-    @IsOptional()
-    menu_id?: number;
+    @MaxLength(50)     // Maximum length of 50 characters
+    banner_name?: string;
 
     @Expose()
     @IsString()
@@ -27,14 +20,14 @@ export class UpdateCategoryDto {
     imgurl?: string;
 
     @Expose()
-    @IsNumber()
     @IsOptional()
-    display_order?: number;
+    detail_link?: string;
 
     @Expose()
-    @IsString()
+    @IsNumber()
     @IsOptional()
-    tag?: string;
+    @Type(() => Number)
+    menu_id: number;
 
     @Expose()
     @IsBoolean()
